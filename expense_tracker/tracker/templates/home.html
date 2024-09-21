@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+        }
+        table {
+            border-collapse: collapse; /* Collapse borders */
+            margin: 20px 0; /* Space around the table */
+            width: 80%; /* Set a width for the table */
+        }
+        th, td {
+            border: 1px solid #ddd; /* Border for table cells */
+            padding: 10px; /* Padding inside cells */
+            text-align: center; /* Center align text */
+        }
+        th {
+            background-color: #f2f2f2; /* Light gray background for headers */
+        }
+    </style>
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    <a href="{% url 'add_expense' %}">Add New Expense</a>
+
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.category.name }}</td>
+            <td>{{ expense.description }}</td>
+            <td>{{ expense.amount }}</td>
+            <td>{{ expense.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
